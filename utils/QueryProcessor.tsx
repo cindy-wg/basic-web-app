@@ -38,5 +38,23 @@ export default function QueryProcessor(query: string): string {
     return sum.toString();
   }
 
+  if (query.toLowerCase().includes("square and a cube")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length > 0) {
+        const isPerfectSixthPower = (num) => {
+            const sixthRoot = Math.round(Math.pow(num, 1/6));
+            return Math.pow(sixthRoot, 6) === num;
+        };
+
+        const result = numbers.filter(num => isPerfectSixthPower(Number(num)));
+
+        if (result.length > 0) {
+            return result.join(", ");
+        } else {
+            return "None of the numbers are both a square and a cube.";
+        }
+    }
+  }
+
   return "";
 }
