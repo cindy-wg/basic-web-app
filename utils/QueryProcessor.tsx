@@ -51,7 +51,7 @@ export default function QueryProcessor(query: string): string {
         if (result.length > 0) {
             return result.join(", ");
         } else {
-            return "None of the numbers are both a square and a cube.";
+            return "";
         }
     }
   }
