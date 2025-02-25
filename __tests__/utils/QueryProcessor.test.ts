@@ -59,10 +59,34 @@ describe("QueryProcessor", () => {
     })
 
     test('should return numbers that are a square and a cube', () => {
-        const query = "Which of the following numbers is both a square and a cube: 2, 3, 5, 6, 64?";
+        const query = "Which of the following numbers is both a square and a cube: 4096, 2603, 1119, 1328, 1681, 4350, 512?";
         const response: string = QueryProcessor(query);
         expect(response).toBe((
-            "64"
+            "4096"
+          ));
+    })
+
+    test('should return primes', () => {
+        const query = "Which of the following numbers are primes: 14, 2, 47, 93, 38?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "2, 47"
+          ));
+    })
+
+    test('should return difference', () => {
+        const query = "What is 55 minus 5?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "50"
+          ));
+    })
+
+    test('should return power', () => {
+        const query = "What is 3 to the power of 3?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "27"
           ));
     })
 });

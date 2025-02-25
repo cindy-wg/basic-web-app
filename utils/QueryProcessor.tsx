@@ -88,10 +88,17 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("power of")) {
-    const num1 = query.substring(query.indexOf("is ") + 3, query.indexOf(" to"));
-    const num2 = query.substring(query.indexOf("of ") + 3, query.indexOf("?"));
-    const power = parseInt(num1) ** parseInt(num2);
-    return power.toString();
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length === 2) {
+        const base = Number(numbers[0]);
+        const exponent = Number(numbers[1]);
+
+        const result = base ** exponent;
+
+        return result.toString();
+    } else {
+        return "";
+    }
   }
 
   return "";
