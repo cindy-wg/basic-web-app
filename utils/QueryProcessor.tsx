@@ -37,8 +37,8 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("multiplied")) {
     const num1 = query.substring(query.indexOf("is ") + 3, query.indexOf(" multiplied"));
     const num2 = query.substring(query.indexOf("by ") + 3, query.indexOf("?"));
-    const sum = parseInt(num1) * parseInt(num2);
-    return sum.toString();
+    const product = parseInt(num1) * parseInt(num2);
+    return product.toString();
   }
 
   if (query.toLowerCase().includes("square and a cube")) {
@@ -83,8 +83,15 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("minus")) {
     const num1 = query.substring(query.indexOf("is ") + 3, query.indexOf(" minus"));
     const num2 = query.substring(query.indexOf("minus ") + 6, query.indexOf("?"));
-    const sum = parseInt(num1) - parseInt(num2);
-    return sum.toString();
+    const difference = parseInt(num1) - parseInt(num2);
+    return difference.toString();
+  }
+
+  if (query.toLowerCase().includes("power of")) {
+    const num1 = query.substring(query.indexOf("is ") + 3, query.indexOf(" power"));
+    const num2 = query.substring(query.indexOf("of ") + 3, query.indexOf("?"));
+    const power = parseInt(num1) ** parseInt(num2);
+    return power.toString();
   }
 
   return "";
