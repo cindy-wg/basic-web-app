@@ -56,5 +56,33 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("primes")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length > 0) {
+        const isPrime = (num) => {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        };
+
+        const primes = numbers.filter(num => isPrime(Number(num)));
+
+        if (primes.length > 0) {
+            return primes.join(", ");
+        } else {
+            return "";
+        }
+    }
+  }
+
+  if (query.toLowerCase().includes("minus")) {
+    const num1 = query.substring(query.indexOf("is ") + 3, query.indexOf(" minus"));
+    const num2 = query.substring(query.indexOf("minus ") + 6, query.indexOf("?"));
+    const sum = parseInt(num1) - parseInt(num2);
+    return sum.toString();
+  }
+
   return "";
 }
