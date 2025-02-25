@@ -88,7 +88,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("power of")) {
-    const num1 = query.substring(query.indexOf("is ") + 3, query.indexOf(" power"));
+    const num1 = query.substring(query.indexOf("is ") + 3, query.indexOf(" to"));
     const num2 = query.substring(query.indexOf("of ") + 3, query.indexOf("?"));
     const power = parseInt(num1) ** parseInt(num2);
     return power.toString();
