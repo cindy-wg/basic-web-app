@@ -41,4 +41,28 @@ describe("QueryProcessor", () => {
             "9"
           ));
     })
+
+    test('should return largest number', () => {
+        const query = "Which of the following numbers is the largest: 33, 62, 78?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "78"
+          ));
+    })
+
+    test('should return multiplication', () => {
+        const query = "What is 3 multiplied by 8?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "24"
+          ));
+    })
+
+    test('should return numbers that are a square and a cube', () => {
+        const query = "Which of the following numbers is both a square and a cube: 2, 3, 5, 6, 64?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "64"
+          ));
+    })
 });
