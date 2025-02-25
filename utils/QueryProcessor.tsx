@@ -41,7 +41,7 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("square and a cube")) {
     const numbers = query.match(/\d+/g);
     if (numbers && numbers.length > 0) {
-        const isPerfectSixthPower = (num) => {
+        const isPerfectSixthPower = (num : number) => {
             const sixthRoot = Math.round(Math.pow(num, 1/6));
             return Math.pow(sixthRoot, 6) === num;
         };
@@ -59,7 +59,7 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("primes")) {
     const numbers = query.match(/\d+/g);
     if (numbers && numbers.length > 0) {
-        const isPrime = (num) => {
+        const isPrime = (num : number) => {
             if (num < 2) return false;
             for (let i = 2; i <= Math.sqrt(num); i++) {
                 if (num % i === 0) return false;
