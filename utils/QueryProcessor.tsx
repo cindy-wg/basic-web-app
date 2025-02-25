@@ -22,5 +22,14 @@ export default function QueryProcessor(query: string): string {
     return sum.toString();
   }
 
+  if (query.toLowerCase().includes("largest")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length > 0) {
+        const numArray = numbers.map(Number);
+        const largest = Math.max(...numArray);
+        return largest.toString();
+    }
+  }
+
   return "";
 }
