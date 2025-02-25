@@ -15,5 +15,12 @@ export default function QueryProcessor(query: string): string {
     return "cindywan";
   }
 
+  if (query.toLowerCase().includes("plus")) {
+    const num1 = query.substring(query.indexOf("is ") + 3, query.indexOf(" plus"));
+    const num2 = query.substring(query.indexOf("plus ") + 5, query.indexOf("?"));
+    const sum = parseInt(num1) + parseInt(num2);
+    return sum.toString();
+  }
+
   return "";
 }

@@ -33,4 +33,12 @@ describe("QueryProcessor", () => {
             "cindywan"
           ));
     })
+
+    test('should return addition', () => {
+        const query = "What is 2 plus 7?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "9"
+          ));
+    })
 });
