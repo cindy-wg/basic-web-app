@@ -16,10 +16,13 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("plus")) {
-    const num1 = query.substring(query.indexOf("is ") + 3, query.indexOf(" plus"));
-    const num2 = query.substring(query.indexOf("plus ") + 5, query.indexOf("?"));
-    const sum = parseInt(num1) + parseInt(num2);
-    return sum.toString();
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length >= 2) {
+        const sum = numbers.map(Number).reduce((acc, num) => acc + num, 0);
+        return sum.toString();
+    } else {
+        return "";
+    }
   }
 
   if (query.toLowerCase().includes("largest")) {
